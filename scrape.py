@@ -16,6 +16,10 @@ with SgChrome() as driver:
 
     full_address = grid.find("a").text
     city_state_zipp = full_address.replace(address, "").strip()
+    city = city_state_zipp.split(", ")[0]
+    state = city_state_zipp.split(", ")[1].split(" ")[0]
+    zipp = city_state_zipp.split(", ")[1].split(" ")[1]
     print(city_state_zipp)
+    print(zipp)
 
 
