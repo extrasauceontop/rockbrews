@@ -1,7 +1,9 @@
 from sgselenium import SgChrome
 
 with SgChrome() as driver:
-  html = driver.get("https://www.rockandbrews.com/locations").page_source
+  driver.get("https://www.rockandbrews.com/locations")
+
+  html = driver.html
 
   print(html)
 print("done")
