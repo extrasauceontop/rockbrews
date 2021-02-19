@@ -7,10 +7,14 @@ with SgChrome() as driver:
   soup = bs(html, "html.parser")
 
   grids = soup.find_all("div", attrs={"class": "col-md-4 col-xs-12 pm-location"})
-  print("here")
-  for grid in grids:
-    print("found")
-    name = grid.find("h4").text
-    print(name)
 
-print("done")
+  for grid in grids:
+    name = grid.find("h4").text
+    full_address = grid.find("a").text.split("\n")
+    address = full_address[0]
+    city = full_address[1].split(", ")[0]
+    state = full_address[1].split(",")[1].split(" ")[0]
+    zipp = full_address[1].split(",")[1].split(" ")[1]
+    print(zipp)
+
+
