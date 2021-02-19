@@ -14,7 +14,7 @@ with SgChrome() as driver:
     address = grid.find("span").text
 
 
-    full_address = grid.find("a")
+    full_address = grid.find("a").text
     city_state_zipp = full_address.replace(address, "").strip()
     print(city_state_zipp)
 
