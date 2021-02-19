@@ -47,7 +47,7 @@ with SgChrome() as driver:
     latitude = "<MISSING>"
     longitude = "<MISSING>"
 
-    hour = grid.find("div", attrs={"class": "hours-times"}).text
+    hour = grid.find("div", attrs={"class": "hours"}).text
     print(hour)
 
 
