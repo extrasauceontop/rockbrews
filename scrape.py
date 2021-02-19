@@ -10,8 +10,12 @@ with SgChrome() as driver:
 
   for grid in grids:
     name = grid.find("h4").text
-    
+
     address = grid.find("span").text
-    print(address)
+
+
+    full_address = grid.find("a")
+    city_state_zipp = full_address.replace(address, "").strip()
+    print(city_state_zipp)
 
 
