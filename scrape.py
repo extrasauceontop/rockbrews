@@ -11,6 +11,7 @@ with SgChrome() as driver:
   for grid in grids:
     name = grid.find("h4").text
     full_address = grid.find("a").text.split("\n")
+    print(full_address)
     address = full_address[0]
     city = full_address[1].split(", ")[0]
     state = full_address[1].split(",")[1].split(" ")[0]
