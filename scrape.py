@@ -1,5 +1,6 @@
 from sgselenium import SgChrome
 from bs4 import BeautifulSoup as bs
+import pandas as pd
 
 locator_domains = []
 page_urls = []
@@ -48,8 +49,42 @@ with SgChrome() as driver:
     longitude = "<MISSING>"
 
     hour = grid.find("div", attrs={"class": "hours"}).text
-    print(hour)
+    
+    locator_domains.append(locator_domain)
+    page_urls.append(page_url)
+    location_names.append(name)
+    street_addresses.append(address)
+    citys.append(city)
+    states.append(state)
+    zips.append(zipp)
+    country_codes.append(country_code)
+    store_numbers.append(store_number)
+    phones.append(phone)
+    location_types.append(location_type)
+    latitudes.append(latitude)
+    longitudes.append(longitude)
+    hours_of_operations.append(hour)
+  
 
+df = pd.DataFrame(
+    {
+        "locator_domain": locator_domains,
+        "page_url": page_urls,
+        "location_name": location_names,
+        "street_address": street_addresses,
+        "city": citys,
+        "state": states,
+        "zip": zips,
+        "store_number": store_numbers,
+        "phone": phones,
+        "latitude": latitudes,
+        "longitude": longitudes,
+        "hours_of_operation": hours_of_operations,
+        "country_code": country_codes,
+        "location_type": location_types,
+    }
+)
 
+df.to_csv("data.csv", index=False)
 
 
