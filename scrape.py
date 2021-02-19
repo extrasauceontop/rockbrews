@@ -3,7 +3,7 @@ from sgselenium import SgChrome
 with SgChrome() as driver:
   driver.get("https://www.rockandbrews.com/locations")
 
-  html = driver.html
+  stuff = driver.find_element("body")
 
-  print(html)
+  print(stuff)
 print("done")
