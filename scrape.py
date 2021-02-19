@@ -7,7 +7,9 @@ with SgChrome() as driver:
   soup = bs(html, "html.parser")
 
   grids = soup.find_all("div", attrs={"class": "col-md-4 col-xs-12 pm-locations"})
+  print("here")
   for grid in grids:
+    print("found")
     name = grid.find("h4").text
     print(name)
 
