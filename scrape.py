@@ -1,11 +1,14 @@
 from sgselenium import SgChrome
+from bs4 import BeautifulSoup as bs
 
 with SgChrome() as driver:
   driver.get("https://www.rockandbrews.com/locations")
-  print(driver.page_source)
-  stuff = driver.find_elements_by_xpath(f"//div[@class = 'col-md-4 col-xs-12 pm-location']")
-  for element in stuff:
-    e_text = element.text.split("\n")
-    print(e_text[0])
+  html = driver.page_source
+  soup = bs(html, "html.parser")
+
+  grids = soup.find_all("div", attrs={"class": "col-md-4 col-xs-12 pm-locations"})
+  for grid in grids:
+    name = grid.find("h4").text
+    print(name)
 
 print("done")
