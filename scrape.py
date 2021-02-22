@@ -88,6 +88,6 @@ df = pd.DataFrame(
     }
 )
 
-df.to_csv("data.csv", index=False)
+df.to_csv("data.csv")
 
 
