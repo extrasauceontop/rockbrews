@@ -39,31 +39,34 @@ with SgChrome() as driver:
     state = city_state_zipp.split(", ")[1].split(" ")[0]
     zipp = city_state_zipp.split(", ")[1].split(" ")[1]
 
-    country_code = "US"
+    if len(state) < 2:
+        pass
+    else:
+        country_code = "US"
 
-    store_number = "<MISSING>"
-    phone = "<MISSING>"
-    location_type = "<MISSING>"
+        store_number = "<MISSING>"
+        phone = "<MISSING>"
+        location_type = "<MISSING>"
 
-    latitude = "<MISSING>"
-    longitude = "<MISSING>"
+        latitude = "<MISSING>"
+        longitude = "<MISSING>"
 
-    hour = grid.find("div", attrs={"class": "hours"}).text
-    
-    locator_domains.append(locator_domain)
-    page_urls.append(page_url)
-    location_names.append(name)
-    street_addresses.append(address)
-    citys.append(city)
-    states.append(state)
-    zips.append(zipp)
-    country_codes.append(country_code)
-    store_numbers.append(store_number)
-    phones.append(phone)
-    location_types.append(location_type)
-    latitudes.append(latitude)
-    longitudes.append(longitude)
-    hours_of_operations.append(hour)
+        hour = grid.find("div", attrs={"class": "hours"}).text
+        
+        locator_domains.append(locator_domain)
+        page_urls.append(page_url)
+        location_names.append(name)
+        street_addresses.append(address)
+        citys.append(city)
+        states.append(state)
+        zips.append(zipp)
+        country_codes.append(country_code)
+        store_numbers.append(store_number)
+        phones.append(phone)
+        location_types.append(location_type)
+        latitudes.append(latitude)
+        longitudes.append(longitude)
+        hours_of_operations.append(hour)
   
 
 df = pd.DataFrame(
@@ -85,8 +88,6 @@ df = pd.DataFrame(
     }
 )
 
-df = df.replace(r"^\s*$", "", regex=True)
-df = df.dropna()
 df.to_csv("data.csv", index=False)
 
 
