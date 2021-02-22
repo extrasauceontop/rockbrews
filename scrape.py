@@ -85,6 +85,7 @@ df = pd.DataFrame(
     }
 )
 
+df = df.replace(r"^\s*$", "", regex=True)
 df = df.dropna()
 df.to_csv("data.csv", index=False)
 
