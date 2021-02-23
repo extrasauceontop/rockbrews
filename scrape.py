@@ -65,7 +65,10 @@ with SgChrome() as driver:
             print("got soup")
 
             div = soup.find("div", attrs={"id": "location"})
-            phone = div.find("a")["href"].replace("tel:", "")
+            try:
+                phone = div.find("a")["href"].replace("tel:", "")
+            except Exception:
+                phone = "<MISSING>"
 
             locator_domains.append(locator_domain)
             page_urls.append(page_url)
