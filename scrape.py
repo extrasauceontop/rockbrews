@@ -55,13 +55,17 @@ with SgChrome() as driver:
 
             location_url_format = name.replace(" ", "-")
             page_url = "https://www.rockandbrews.com/" + location_url_format
+            
+            print("pre-soup")
+            driver.get(page_url)
+            print("got page")
+            html = driver.page_source
+            print("got html")
+            soup = bs(html, "html.parser")
+            print("got soup")
 
-            # driver.get(page_url)
-            # html = driver.page_source
-            # soup = bs(html, "html.parser")
-
-            # div = soup.find("div", attrs={"id": "location"})
-            # phone = div.find("a")["href"].replace("tel:", "")
+            div = soup.find("div", attrs={"id": "location"})
+            phone = div.find("a")["href"].replace("tel:", "")
 
             locator_domains.append(locator_domain)
             page_urls.append(page_url)
