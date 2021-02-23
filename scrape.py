@@ -21,7 +21,8 @@ with SgChrome() as driver:
     driver.get("https://www.rockandbrews.com/locations")
     html = driver.page_source
     soup = bs(html, "html.parser")
-
+    
+    print("Got the goods")
     grids = soup.find_all("div", attrs={"class": "col-md-4 col-xs-12 pm-location"})
 
     for grid in grids:
