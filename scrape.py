@@ -56,7 +56,7 @@ with SgChrome() as driver:
             location_url_format = name.replace(" ", "-")
             page_url = "https://www.rockandbrews.com/" + location_url_format
             
-            print("pre-soup")
+            print(page_url)
             driver.get(page_url)
             print("got page")
             html = driver.page_source
